@@ -9,6 +9,7 @@ async function updateFolderName(folderId, newName) {
     };
     const response = await apiClient.request('PUT', `/Drive/Folders/${folderId}`, body);
     console.log('✓ Task #3 Complete - Folder Updated');
+    console.log('Status Code:', response.statusCode);
     console.log('Response:', JSON.stringify(response.data, null, 2));
     return response.data;
   } catch (error) {

@@ -40,7 +40,8 @@ document360-api-task/
 ## Authentication
 All API requests use the `api_token` header:
 ```
-api_token: <your_api_token>
+api_token: 1v9fUFV3l+4XZ+laMwCP8ha0HCRawfN6qQWGhVZ+rKP9ohdUBgez1Y/2cOI2Kq88P4g/eOxl1oGcZ/NG4jpERh8GGE7lHJiR1Olm0npUg0guxfPBpffculxO0yUrgdy85EX/ugGDXYEuo+voLyoraQ==
+
 ```
 
 ## Setup Instructions

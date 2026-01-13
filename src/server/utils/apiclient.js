@@ -1,4 +1,5 @@
 const https = require('https');
+const { URL } = require("url");
 const env = require('../config/env');
 
 class APIClient {
@@ -9,7 +10,11 @@ class APIClient {
 
   request(method, endpoint, body = null) {
     return new Promise((resolve, reject) => {
+
       const url = new URL(this.baseURL + endpoint);
+
+      const payload = body ? JSON.stringify(body) : null;
+
       const options = {
         hostname: url.hostname,
         path: url.pathname + url.search,
@@ -20,7 +25,11 @@ class APIClient {
         }
       };
 
-      const req = https.request(options, (res) => {
+      if (payload) {
+        options.headers["Content-Length"] = Buffer.byteLength(payload);
+      }
+
+      const req = https.request(options, (res) => { 
         let data = '';
 
         res.on('data', (chunk) => {
@@ -47,8 +56,8 @@ class APIClient {
         reject(error);
       });
 
-      if (body) {
-        req.write(JSON.stringify(body));
+      if (payload) {
+        req.write(payload);
       }
 
       req.end();

@@ -2,7 +2,6 @@ const { getAllFolders } = require('./tasks/task1-GET/getAllFolders');
 const { createFolder } = require('./tasks/task2-POST/createFolder');
 const { updateFolderName } = require('./tasks/task3-PUT/updateFolderName');
 const { deleteFolder } = require('./tasks/task4-DELETE/deleteFolder');
-
 async function main() {
   try {
     console.log('=== Document360 API Task Execution ===\n');
