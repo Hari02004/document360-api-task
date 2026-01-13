@@ -16,7 +16,7 @@ class APIClient {
         method: method,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.apiKey}`
+          'api_token': this.apiKey
         }
       };
 

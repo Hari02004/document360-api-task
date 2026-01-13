@@ -1,16 +1,19 @@
-const folderService = require('./services/folderservice');
+const { getAllFolders } = require('./tasks/task1-GET/getAllFolders');
+const { createFolder } = require('./tasks/task2-POST/createFolder');
+const { updateFolderName } = require('./tasks/task3-PUT/updateFolderName');
+const { deleteFolder } = require('./tasks/task4-DELETE/deleteFolder');
 
 async function main() {
   try {
     console.log('=== Document360 API Task Execution ===\n');
-    const allFolders = await folderService.getAllFolders();
+    const allFolders = await getAllFolders();
 
-    const newFolderResult = await folderService.createFolder('Test Folder');
+    const newFolderResult = await createFolder('Test Folder');
     const folderId = newFolderResult.folderId;
 
-    const updatedFolder = await folderService.updateFolderName(folderId, 'Updated Test Folder');
+    const updatedFolder = await updateFolderName(folderId, 'Updated Test Folder');
 
-    const deletedFolder = await folderService.deleteFolder(folderId);
+    const deletedFolder = await deleteFolder(folderId);
 
     console.log('\n=== All Tasks Completed Successfully ===');
   } catch (error) {
