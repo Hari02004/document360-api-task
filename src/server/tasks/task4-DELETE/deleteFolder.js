@@ -4,7 +4,7 @@ const apiClient = require('../../utils/apiclient');
 async function deleteFolder(folderId) {
   try {
     console.log(`\nTask #4: Deleting folder ${folderId}...`);
-    const response = await apiClient.request('DELETE', `/Drive/Folders/${folderId}`);
+    const response = await apiClient.request('DELETE', `/${folderId}`);
     console.log('✓ Task #4 Complete - Folder Deleted');
     console.log('Status Code:', response.statusCode);
     console.log('Response:', JSON.stringify(response.data, null, 2));
