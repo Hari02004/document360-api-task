@@ -14,15 +14,31 @@ class APIClient {
     });
   }
 
-  async request(method, body = null) {
+  async request(method, pathOrBody = null, body = null) {
     try {
+      let url = '';
+      let requestBody = null;
+
+      // Handle overloaded parameters: 
+      // - request(method) or request(method, body)
+      // - request(method, path, body)
+      if (typeof pathOrBody === 'string') {
+        // Second parameter is a path (for PUT/DELETE with endpoint)
+        url = pathOrBody;
+        requestBody = body;
+      } else {
+        // Second parameter is the body (for GET/POST without custom path)
+        url = '';
+        requestBody = pathOrBody;
+      }
+
       const config = {
         method: method,
-        url: this.baseURL,
+        url: url,
       };
 
-      if (body) {
-        config.data = body;
+      if (requestBody) {
+        config.data = requestBody;
       }
 
       const response = await this.client(config);

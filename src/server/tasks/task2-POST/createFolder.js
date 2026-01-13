@@ -14,7 +14,7 @@ async function createFolder(folderName) {
     console.log('Response:', JSON.stringify(response.data, null, 2));
     
     // Extract and return folder ID for use in next tasks
-    const folderId = response.data.id || response.data.folderId;
+    const folderId = response.data.data?.media_folder_id || response.data.id || response.data.folderId;
     return {
       folderId: folderId,
       folderData: response.data
